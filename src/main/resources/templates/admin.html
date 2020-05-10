@@ -1,10 +1,54 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Admin</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-    <h1>Admin</h1>
-</body>
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Admin</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="/template_css/admin.css">
+    </head>
+    <body>
+        <div class="container-sm main">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Congratulations</h4>
+                <p>Your poll is ready! This is the admin page. Your can share the following links with your friends.</p>
+            </div>
+
+            <label>Admin page(this page)</label>
+            <div class="input-group">
+                <input type="text" readonly="readonly" class="form-control" id="admin_address" >
+                <div class="input-group-append" id="button_addon_admin">
+                    <button class="btn btn-outline-secondary" type="button" id="admin_copy">Copy</button>
+                    <button class="btn btn-outline-secondary" type="button" id="admin_goto">Go</button>
+                </div>
+            </div>
+
+            <label>Take poll: </label>
+            <div class="input-group">
+                <input type="text" readonly="readonly" class="form-control" id="poll_address" >
+                <div class="input-group-append" id="button_addon_poll">
+                    <button class="btn btn-outline-secondary" type="button" id="poll_copy">Copy</button>
+                    <button class="btn btn-outline-secondary" type="button" id="poll_goto">Go</button>
+                </div>
+            </div>
+
+            <label>View result: </label>
+            <div class="input-group">
+                <input type="text" readonly="readonly" class="form-control" id="result_address" >
+                <div class="input-group-append" id="button_addon_result">
+                    <button class="btn btn-outline-secondary" type="button" id="result_copy">Copy</button>
+                    <button class="btn btn-outline-secondary" type="button" id="result_goto">Go</button>
+                </div>
+            </div>
+
+        </div>
+<!--        <a href="/" th:href="@{/admin/{poll_id}(poll_id=${poll_id})}">refresh</a>-->
+
+        <span id="poll_id" style="display: none"><th:block th:text="${poll_id}" /></span>
+
+        <script src="/template_js/admin.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
 </html>
