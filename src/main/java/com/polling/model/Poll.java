@@ -49,7 +49,7 @@ public class Poll {
   }
 
   public String getStartTime() {
-    return startTime;
+    return this.startTime;
   }
 
   public void setStartTime(String startTime) {
@@ -62,14 +62,6 @@ public class Poll {
 
   public void setEndTime(String endTime) {
     this.endTime = endTime;
-  }
-
-  @Override
-  public String toString() {
-    return "Poll{" +
-            "title='" + title + '\'' +
-            ", questions=" + questions +
-            '}';
   }
 
   public void show() {
