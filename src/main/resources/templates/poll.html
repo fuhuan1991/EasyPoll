@@ -58,9 +58,62 @@
             <button id="submit" type="button" class="btn btn-primary btn-lg">Submit</button>
         </div>
 
-        <span id="poll_id" style="display: none"><th:block th:text="${poll_id}" /></span>
+        <div id="info_modal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <svg class="bi bi-exclamation-triangle-fill" width="5em" height="5em" viewBox="0 0 16 16" fill="#fabc05" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8.982 1.566a1.13 1.13 0 00-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5a.905.905 0 00-.9.995l.35 3.507a.552.552 0 001.1 0l.35-3.507A.905.905 0 008 5zm.002 6a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"/>
+                        </svg>
+                        <p>You have already voted.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a th:href="@{/result/{id}(id=${poll.id})}"><button type="button" class="btn btn-primary">See the result</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="success_modal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <svg class="bi bi-check-box" width="5em" height="5em" viewBox="0 0 16 16" fill="#68df74" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L8 9.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 003 14.5h10a1.5 1.5 0 001.5-1.5V8a.5.5 0 00-1 0v5a.5.5 0 01-.5.5H3a.5.5 0 01-.5-.5V3a.5.5 0 01.5-.5h8a.5.5 0 000-1H3A1.5 1.5 0 001.5 3v10z" clip-rule="evenodd"/>
+                        </svg>
+                        <p>Submit successful!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a th:href="@{/result/{id}(id=${poll.id})}"><button type="button" class="btn btn-primary">See the result</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="error_modal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <svg class="bi bi-x-circle-fill" width="5em" height="5em" viewBox="0 0 16 16" fill="#ea4236" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-4.146-3.146a.5.5 0 00-.708-.708L8 7.293 4.854 4.146a.5.5 0 10-.708.708L7.293 8l-3.147 3.146a.5.5 0 00.708.708L8 8.707l3.146 3.147a.5.5 0 00.708-.708L8.707 8l3.147-3.146z" clip-rule="evenodd"/>
+                        </svg>
+                        <p>Some error occurred, please refresh.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a th:href="@{/poll/{id}(id=${poll.id})}"><button type="button" class="btn btn-primary">
+                            <svg class="bi bi-arrow-counterclockwise" width="1.4em" height="1.4em" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M12.83 6.706a5 5 0 00-7.103-3.16.5.5 0 11-.454-.892A6 6 0 112.545 5.5a.5.5 0 11.91.417 5 5 0 109.375.789z" clip-rule="evenodd"/>
+                                <path fill-rule="evenodd" d="M7.854.146a.5.5 0 00-.708 0l-2.5 2.5a.5.5 0 000 .708l2.5 2.5a.5.5 0 10.708-.708L5.707 3 7.854.854a.5.5 0 000-.708z" clip-rule="evenodd"/>
+                            </svg>
+                        </button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span id="poll_id" style="display: none"><th:block th:text="${poll.id}" /></span>
         <script src="https://unpkg.com/unfetch/polyfill"></script>
-        <script src="/template_js/poll.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
                 integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
                 crossorigin="anonymous"></script>
@@ -70,5 +123,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
                 integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
                 crossorigin="anonymous"></script>
+        <script src="/template_js/poll.js"></script>
     </body>
 </html>
