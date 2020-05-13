@@ -1,5 +1,6 @@
 import React from 'react';
-import { Input, Button, Modal } from 'antd';
+import moment from 'moment';
+import { Input, Button, Modal, Typography, DatePicker } from 'antd';
 import QuestionForm from './QuestionForm';
 import {
     DeleteOutlined,
@@ -8,6 +9,13 @@ import {
     CarryOutOutlined,
 } from '@ant-design/icons';
 import { createPoll } from './client';
+
+const { Title, Paragraph } = Typography;
+  
+function disabledDate(current) {
+    // Can not select days before today and days after 14 days later.
+    return current < moment().endOf('day') || current > moment().add(14, 'days');
+}
 
 class Main extends React.Component {
 
@@ -19,10 +27,13 @@ class Main extends React.Component {
             editMod: false,
             currentEditId: -1,
             questions: [],
+            endDate: moment().endOf('day'),
         };
     }
 
-    componentDidMount(){}
+    componentDidMount(){
+        // console.log(this.state.endDate)
+    }
 
     openEditMod = (QuestionId) => {
 
@@ -39,7 +50,7 @@ class Main extends React.Component {
     }
 
     onQuestionConfirm = (data) => {
-        if (this.state.currentEditId >=0 ) {
+        if (this.state.currentEditId >= 0 ) {
             // edit mod
             const temp = this.state.questions;
             temp[this.state.currentEditId] = data;
@@ -67,19 +78,16 @@ class Main extends React.Component {
 
     renderQuestions = (questions) => {
         return questions.map((question, index) => {
-
-        const options = question.options.map((option, i) => <div className='option' key={option.name}>option {i+1}:{option.name}</div>);
-
+            const options = question.options.map((option, i) => <div className='option' key={i + option.name}>option {i+1}:{option.name}</div>);
             return (
-                <div key={question.questionName}>
+                <div key={index + question.name}>
                     <div className='question_title'>
                         Question {index+1}: 
-                        <span className='blue'>({question.type==='multiple'? 'Multiple choice' : 'Single choice'})</span> 
-                        {question.questionName}
+                        <span className='blue'>({question.type==='MULTIPLE'? 'Multiple choice' : 'Single choice'})</span> 
+                        {question.name}
                         <DeleteOutlined onClick={this.onQuestionDeletion.bind(this, index)} />
                         <EditOutlined onClick={this.openEditMod.bind(this, index)} />
                     </div>
-                    
                     <div>{options}</div>
                 </div>
             );
@@ -101,14 +109,30 @@ class Main extends React.Component {
         const o = {
             title: this.state.title.trim(),
             questions: this.state.questions,
+            endTime: this.state.endDate.format('YYYY-MM-D hh:mm:ss'),
         };
+        // The response from back-end will be the ID of the new poll
         createPoll(o).then(
-            (res) => {
-                console.log(res)
+            (poll_id) => {
+                console.log('new poll ID: ' + poll_id);
+                // Now the new poll isready and we got the ID, time to redirect!
+                window.location.replace('/admin/' + poll_id); 
             }, 
             (e) => {
-                console.log(e);
+                window.location.replace('/error/');
             });
+    }
+
+    onDateChange = (date) => {
+        this.setState({
+            endDate: date,
+        });
+    }
+
+    setXdaysLater = (x) => {
+        this.setState({
+            endDate:  moment().endOf('day').add(x, 'days'),
+        });
     }
 
     render() {
@@ -118,10 +142,34 @@ class Main extends React.Component {
         return (
             <React.Fragment>
                 <div className="main">
-                    <h1>Start a New Poll</h1>
+                    <Typography>
+                        <Title>EasyPoll</Title>
+                        <Paragraph>
+                            This is an online polling application. Yout can start a poll among your friends within 1 min. 
+                            <ul>
+                                <li>Easy to setup</li>
+                                <li>No need to sign in</li>
+                                <li>Multiple question types</li>
+                            </ul>
+                        </Paragraph>
+                    </Typography>
+                    
+                    <Title>Start a New Poll</Title>
                     <span>Title:</span>
-                    <Input value={this.state.title} onChange={this.onTitleChange} placeholder="Title" />
+                    <Input value={this.state.title} onChange={this.onTitleChange} placeholder="Title of your poll" />
                     <div className='questions'>{questions}</div>
+                    <div className='date'>
+                        <DatePicker
+                            format="YYYY-MM-DD"
+                            disabledDate={disabledDate}
+                            value={this.state.endDate}
+                            onChange={this.onDateChange}
+                        />
+                        <Button className='date-btn' onClick={this.setXdaysLater.bind(this, 1)}>1 day later</Button>
+                        <Button className='date-btn' onClick={this.setXdaysLater.bind(this, 3)}>3 days later</Button>
+                        <Button className='date-btn' onClick={this.setXdaysLater.bind(this, 7)}>7 days later</Button>
+                    </div>
+                    <div className='date-text'>This poll expires at <span className='blue'>{this.state.endDate.format('MMMM Do')}</span> 23:59</div>
                     <Button type="primary" onClick={this.openEditMod.bind(this, -1)}><PlusCircleOutlined />Add a new question</Button>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <Button type="primary" 

@@ -21,5 +21,11 @@ export const createPoll = data => fetch('api/create', {
     },
     method: 'POST',
     body: JSON.stringify(data),
-}).then(checkStatus);
+}).then(checkStatus)
+  .then(response => {
+    return response.text();
+  }, e => {
+    return e;
+  }
+);
 

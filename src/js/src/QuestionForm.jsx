@@ -11,14 +11,14 @@ class QuestionForm extends React.Component {
         if (props.editIndex >= 0) {
             const question = props.questions[props.editIndex];
             this.state = {
-                questionName: question.questionName,
+                questionName: question.name,
                 type: question.type,
                 options: [...question.options],
             };
         } else {
             this.state = {
                 questionName: '',
-                type: 'single',
+                type: 'SINGLE',
                 options:[],
             };
         }
@@ -69,7 +69,7 @@ class QuestionForm extends React.Component {
 
     onConfirm = () => {
         const o = {
-            questionName: this.state.questionName,
+            name: this.state.questionName,
             options: this.state.options,
             type: this.state.type,
         };
@@ -108,8 +108,8 @@ class QuestionForm extends React.Component {
                 <Input onChange={this.onNameChange} value={this.state.questionName} placeholder='Question Name' />
                 <div className='section'>
                     <Radio.Group onChange={this.onTypeChange} value={this.state.type}>
-                        <Radio value={'multiple'}>Multiple Choice</Radio>
-                        <Radio value={'single'}>Single Choice</Radio>
+                        <Radio value={'MULTIPLE'}>Multiple Choice</Radio>
+                        <Radio value={'SINGLE'}>Single Choice</Radio>
                     </Radio.Group>
                 </div>
                 {options}
