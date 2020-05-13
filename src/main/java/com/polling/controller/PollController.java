@@ -8,6 +8,7 @@ import com.polling.service.PollService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.UUID;
 
@@ -32,15 +33,15 @@ public class PollController {
   public String createPoll (@RequestBody Poll poll) throws Exception{
     System.out.println("----------------create-------------------");
     poll.show();
-
-    poll.setStartTime("2045-06-2 15:30:00");
-    poll.setEndTime("2045-06-6 15:30:00");
+    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+    poll.setStartTime(timestamp.toString());
 
     try {
       this.pollService.insertPoll(poll);
       if (poll.getId() == null) throw new Exception("creation failed");
       return poll.getId();
     } catch (Exception e) {
+      e.printStackTrace();
       throw new Exception("creation failed");
     }
   }
@@ -68,5 +69,26 @@ public class PollController {
     for (Option target : options) {
       this.optionService.inc(target);
     }
+  }
+
+
+
+
+  @GetMapping(path = "/test")
+  public void test () {
+    Poll p = this.pollService.findPollById("WZLMeeuiRd2jCWdDSPV5jw");
+    this.pollService.deletePoll(p);
+  }
+
+  public static void main(String[] args) {
+//    Timestamp t1 = Timestamp.valueOf("2020-05-13 11:59:59");
+//    Timestamp t2 = Timestamp.valueOf("2020-05-12 19:58:09.229");
+//    System.out.println(t1);
+//    System.out.println(t2);
+//    System.out.println(t1.before(t2));
+//    System.out.println(t2.before(t1));
+
+
+
   }
 }

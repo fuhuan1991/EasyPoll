@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
+
 @Controller
 public class PageController {
 
@@ -83,6 +85,28 @@ public class PageController {
 
     model.addAttribute("poll", poll);
 
-    return "result";
+    return "poll";
   }
+
+  /**
+   * Error page
+   */
+//  @GetMapping("/error")
+//  public String error(Model model) {
+//    return "error";
+//  }
+
+  /**
+   * This is a temporary test api for getting all poll information
+   */
+  @GetMapping("/special/getAll")
+  public String getAll(Model model, ) {
+
+    List<Poll> polls = this.pollService.findAllPolls();
+
+    model.addAttribute("polls", polls);
+
+    return "getAll";
+  }
+
 }
