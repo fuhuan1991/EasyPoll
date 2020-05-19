@@ -39,10 +39,13 @@ body {
       font-weight: 400;
       color: rgba(0, 0, 0, 0.65);
     }
-
+    .small-title {
+      font-size: 1.4rem;
+    }
     .questions{
 
       margin-top: 15px;
+      margin-left: 15px;
       margin-bottom: 15px;
 
       .question_title {
@@ -66,8 +69,9 @@ body {
     }
 
     .date{
-      margin-top: 15px;
+      margin-top:4px;
       margin-bottom: 6px;
+      margin-left: 10px;
       .date-btn{
         margin-left: 8px;
       }
@@ -112,6 +116,12 @@ body {
     padding: 0px;
     background: none;
     background-color: #f8f9fa;
+  }
+}
+
+@media (max-width: 768px){
+  .ant-btn.date-btn {
+    margin-top: .4rem;
   }
 }
 

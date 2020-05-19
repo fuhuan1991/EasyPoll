@@ -106,9 +106,21 @@ class Main extends React.Component {
     }
 
     onCreate = () => {
+
+        const questions = this.state.questions;
+
+        // Attach an index for every question and every option to maintain order
+        for (let i = 0; i < questions.length; i++) {
+            questions[i].index = i;
+
+            for (let j = 0; j < questions[i].options.length; j++) {
+                questions[i].options[j].index = j;
+            }
+        }
+
         const o = {
             title: this.state.title.trim(),
-            questions: this.state.questions,
+            questions: questions,
             endTime: this.state.endDate.format('YYYY-MM-D hh:mm:ss'),
         };
         // The response from back-end will be the ID of the new poll
@@ -155,21 +167,31 @@ class Main extends React.Component {
                     </Typography>
                     
                     <Title>Start a New Poll</Title>
-                    <span>Title:</span>
+
+                    <span className='small-title'>Title:</span>
                     <Input value={this.state.title} onChange={this.onTitleChange} placeholder="Title of your poll" />
-                    <div className='questions'>{questions}</div>
+
+                    <div style={{marginTop: '2rem'}}></div>
+
+                    <span className='small-title'>Valid Time:</span>
                     <div className='date'>
+                        <span>From today to </span>
                         <DatePicker
                             format="YYYY-MM-DD"
                             disabledDate={disabledDate}
                             value={this.state.endDate}
                             onChange={this.onDateChange}
                         />
-                        <Button className='date-btn' onClick={this.setXdaysLater.bind(this, 1)}>1 day later</Button>
-                        <Button className='date-btn' onClick={this.setXdaysLater.bind(this, 3)}>3 days later</Button>
-                        <Button className='date-btn' onClick={this.setXdaysLater.bind(this, 7)}>7 days later</Button>
+                        <Button className='date-btn' onClick={this.setXdaysLater.bind(this, 1)}>+1day</Button>
+                        <Button className='date-btn' onClick={this.setXdaysLater.bind(this, 3)}>+3days</Button>
+                        <Button className='date-btn' onClick={this.setXdaysLater.bind(this, 7)}>+7days</Button>
+                        <div className='date-text'>This poll expires at <span className='blue'>{this.state.endDate.format('MMMM Do')}</span> 23:59</div>
                     </div>
-                    <div className='date-text'>This poll expires at <span className='blue'>{this.state.endDate.format('MMMM Do')}</span> 23:59</div>
+
+                    <div style={{marginTop: '2rem'}}></div>
+                    <span className='small-title'>Questions:</span>
+
+                    <div className='questions'>{questions}</div>
                     <Button type="primary" onClick={this.openEditMod.bind(this, -1)}><PlusCircleOutlined />Add a new question</Button>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <Button type="primary" 
