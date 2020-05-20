@@ -32,20 +32,18 @@ public class PageController {
    */
   @GetMapping("/admin/{poll_id}")
   public String admin(Model model, @PathVariable("poll_id") String poll_id) {
-
-    Poll poll = this.pollService.findPollById(poll_id);
-
-    if (poll == null) {
-      model.addAttribute("message", "The poll does not exist.");
-      return "error";
+    try {
+      Poll poll = this.pollService.findPollById(poll_id);
+      if (poll == null) return "lost";
+      model.addAttribute("poll_id", poll_id);
+      model.addAttribute("poll_title", poll.getTitle());
+      model.addAttribute("start_time", poll.getStartTime());
+      model.addAttribute("end_time", poll.getEndTime());
+      return "admin";
+    } catch (Exception e) {
+      e.printStackTrace();
+      return "lost";
     }
-
-    model.addAttribute("poll_id", poll_id);
-    model.addAttribute("poll_title", poll.getTitle());
-    model.addAttribute("start_time", poll.getStartTime());
-    model.addAttribute("end_time", poll.getEndTime());
-
-    return "admin";
   }
 
   /**
@@ -55,17 +53,15 @@ public class PageController {
    */
   @GetMapping("/result/{poll_id}")
   public String result(Model model, @PathVariable("poll_id") String poll_id) {
-
-    Poll poll = this.pollService.findPollById(poll_id);
-
-    if (poll == null) {
-      model.addAttribute("message", "The poll does not exist.");
-      return "error";
+    try {
+      Poll poll = this.pollService.findPollById(poll_id);
+      if (poll == null) return "lost";
+      model.addAttribute("poll", poll);
+      return "result";
+    } catch (Exception e) {
+      e.printStackTrace();
+      return "lost";
     }
-
-    model.addAttribute("poll", poll);
-
-    return "result";
   }
 
   /**
@@ -75,17 +71,14 @@ public class PageController {
    */
   @GetMapping("/poll/{poll_id}")
   public String poll(Model model, @PathVariable("poll_id") String poll_id) {
-
-    Poll poll = this.pollService.findPollById(poll_id);
-
-    if (poll == null) {
-      model.addAttribute("message", "The poll does not exist.");
-      return "error";
+    try {
+      Poll poll = this.pollService.findPollById(poll_id);
+      if (poll == null) return "lost";
+      model.addAttribute("poll", poll);
+      return "poll";
+    } catch (Exception e) {
+      return "lost";
     }
-
-    model.addAttribute("poll", poll);
-
-    return "poll";
   }
 
   /**
@@ -100,7 +93,7 @@ public class PageController {
    * This is a temporary test api for getting all poll information
    */
   @GetMapping("/special/getAll")
-  public String getAll(Model model, ) {
+  public String getAll(Model model) {
 
     List<Poll> polls = this.pollService.findAllPolls();
 

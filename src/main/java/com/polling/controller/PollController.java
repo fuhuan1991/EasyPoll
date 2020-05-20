@@ -42,7 +42,7 @@ public class PollController {
       return poll.getId();
     } catch (Exception e) {
       e.printStackTrace();
-      throw new Exception("creation failed");
+      throw new Exception(e.getMessage());
     }
   }
 
@@ -72,23 +72,7 @@ public class PollController {
   }
 
 
-
-
-  @GetMapping(path = "/test")
-  public void test () {
-    Poll p = this.pollService.findPollById("WZLMeeuiRd2jCWdDSPV5jw");
-    this.pollService.deletePoll(p);
-  }
-
-  public static void main(String[] args) {
-//    Timestamp t1 = Timestamp.valueOf("2020-05-13 11:59:59");
-//    Timestamp t2 = Timestamp.valueOf("2020-05-12 19:58:09.229");
-//    System.out.println(t1);
-//    System.out.println(t2);
-//    System.out.println(t1.before(t2));
-//    System.out.println(t2.before(t1));
-
-
-
-  }
+//  public static void main(String[] args) {
+//
+//  }
 }
