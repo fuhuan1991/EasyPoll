@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/EasyPoll/precache-manifest.cf0ce04bdc24618ee47bd3bb0463e0ea.js"
+  "/EasyPoll/precache-manifest.d9ef87dab3bbfdc7b15390584502382f.js"
 );
 
 self.addEventListener('message', (event) => {

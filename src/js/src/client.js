@@ -1,5 +1,7 @@
 import fetch from 'unfetch';
 
+const baseUrl = 'http://easypoll.us-east-2.elasticbeanstalk.com/';
+
 // check the status of all sort of response
 const checkStatus = response => {
     if (response.ok) {
@@ -15,7 +17,7 @@ const checkStatus = response => {
   }
 
 // create a new Poll
-export const createPoll = data => fetch('api/create', {
+export const createPoll = data => fetch(baseUrl + 'api/create', {
     headers: {
       'Content-Type': 'application/json',
     },

@@ -6,6 +6,7 @@ import com.polling.service.PollService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -30,6 +31,7 @@ public class PageController {
    * The content of this administration page includes some basic information,
    * and links to share.
    */
+  @CrossOrigin
   @GetMapping("/admin/{poll_id}")
   public String admin(Model model, @PathVariable("poll_id") String poll_id) {
     try {
@@ -51,6 +53,7 @@ public class PageController {
    * If this poll does not exist in DB, a error page will be returned.
    * The result of this poll shall be displayed in here.
    */
+  @CrossOrigin
   @GetMapping("/result/{poll_id}")
   public String result(Model model, @PathVariable("poll_id") String poll_id) {
     try {
@@ -69,6 +72,7 @@ public class PageController {
    * If this poll does not exist in DB, a error page will be returned.
    * In this page, a user can take the poll.
    */
+  @CrossOrigin
   @GetMapping("/poll/{poll_id}")
   public String poll(Model model, @PathVariable("poll_id") String poll_id) {
     try {
@@ -92,6 +96,7 @@ public class PageController {
   /**
    * This is a temporary test api for getting all poll information
    */
+  @CrossOrigin
   @GetMapping("/special/getAll")
   public String getAll(Model model) {
 

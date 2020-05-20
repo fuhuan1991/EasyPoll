@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/EasyPoll/static/css/main.c57749aa.chunk.css",
-    "main.js": "/EasyPoll/static/js/main.70176add.chunk.js",
-    "main.js.map": "/EasyPoll/static/js/main.70176add.chunk.js.map",
+    "main.js": "/EasyPoll/static/js/main.f24054af.chunk.js",
+    "main.js.map": "/EasyPoll/static/js/main.f24054af.chunk.js.map",
     "runtime-main.js": "/EasyPoll/static/js/runtime-main.24b20f1b.js",
     "runtime-main.js.map": "/EasyPoll/static/js/runtime-main.24b20f1b.js.map",
     "static/css/2.051905ae.chunk.css": "/EasyPoll/static/css/2.051905ae.chunk.css",
     "static/js/2.c5f91634.chunk.js": "/EasyPoll/static/js/2.c5f91634.chunk.js",
     "static/js/2.c5f91634.chunk.js.map": "/EasyPoll/static/js/2.c5f91634.chunk.js.map",
     "index.html": "/EasyPoll/index.html",
-    "precache-manifest.cf0ce04bdc24618ee47bd3bb0463e0ea.js": "/EasyPoll/precache-manifest.cf0ce04bdc24618ee47bd3bb0463e0ea.js",
+    "precache-manifest.d9ef87dab3bbfdc7b15390584502382f.js": "/EasyPoll/precache-manifest.d9ef87dab3bbfdc7b15390584502382f.js",
     "service-worker.js": "/EasyPoll/service-worker.js",
     "static/css/2.051905ae.chunk.css.map": "/EasyPoll/static/css/2.051905ae.chunk.css.map",
     "static/css/main.c57749aa.chunk.css.map": "/EasyPoll/static/css/main.c57749aa.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.051905ae.chunk.css",
     "static/js/2.c5f91634.chunk.js",
     "static/css/main.c57749aa.chunk.css",
-    "static/js/main.70176add.chunk.js"
+    "static/js/main.f24054af.chunk.js"
   ]
 }

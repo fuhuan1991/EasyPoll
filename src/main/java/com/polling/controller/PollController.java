@@ -29,6 +29,7 @@ public class PollController {
    * Create a new poll. If every thing is alright, a new poll along with all the questions and options will
    * be inserted into the DB. Otherwise, an exception shall be raised.
    */
+  @CrossOrigin
   @PostMapping(path = "/create")
   public String createPoll (@RequestBody Poll poll) throws Exception{
     System.out.println("----------------create-------------------");
@@ -50,6 +51,7 @@ public class PollController {
    * Take a poll. If every thing is alright, changes shall be made in DB.
    * Otherwise, an exception shall be raised.
    */
+  @CrossOrigin
   @PostMapping(path = "/take_poll/{poll_id}")
   public void takePoll (@RequestBody Sample sample, @PathVariable("poll_id") String poll_id) throws Exception{
 

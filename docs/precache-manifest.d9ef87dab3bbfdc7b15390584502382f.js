@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b2aa3c16207626ad97adf796f4ac7b38",
+    "revision": "482e4244ed27316748f862b226fc98d2",
     "url": "/EasyPoll/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/EasyPoll/static/css/2.051905ae.chunk.css"
   },
   {
-    "revision": "64cdaab88d0fba52c5d8",
+    "revision": "96ee4dd8fa8e85a46744",
     "url": "/EasyPoll/static/css/main.c57749aa.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/EasyPoll/static/js/2.c5f91634.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "64cdaab88d0fba52c5d8",
-    "url": "/EasyPoll/static/js/main.70176add.chunk.js"
+    "revision": "96ee4dd8fa8e85a46744",
+    "url": "/EasyPoll/static/js/main.f24054af.chunk.js"
   },
   {
     "revision": "ac187af4bcca780440ba",
