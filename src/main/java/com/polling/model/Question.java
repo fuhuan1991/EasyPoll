@@ -9,18 +9,21 @@ import java.util.UUID;
 
 public class Question {
   private UUID id;
+  private int index;
   private String poll_id;
   private String name;
-  private QuestionType type;
+  private String type;
   private List<Option> options;
 
   public Question(
           @JsonProperty("id") UUID id,
+          @JsonProperty("index") int index,
           @JsonProperty("poll_id") String poll_id,
           @JsonProperty("name") String name,
-          @JsonProperty("type") QuestionType type,
+          @JsonProperty("type") String type,
           @JsonProperty("options") List<Option> options) {
     this.id = id;
+    this.index = index;
     this.poll_id = poll_id;
     this.name = name;
     this.type = type;
@@ -29,6 +32,14 @@ public class Question {
 
   public UUID getId() {
     return id;
+  }
+
+  public int getIndex() {
+    return index;
+  }
+
+  public void setIndex(int index) {
+    this.index = index;
   }
 
   public void setId(UUID id) {
@@ -43,7 +54,7 @@ public class Question {
     this.name = name;
   }
 
-  public QuestionType getType() {
+  public String getType() {
     return type;
   }
 
@@ -51,7 +62,7 @@ public class Question {
     return options;
   }
 
-  public void setType(QuestionType type) {
+  public void setType(String type) {
     this.type = type;
   }
 

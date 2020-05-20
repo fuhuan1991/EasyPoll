@@ -66,6 +66,7 @@ public class Poll {
 
   public void show() {
     System.out.println(this.title);
+    System.out.println(this.startTime + " ====> " + this.endTime);
     for (Question o : this.questions) {
       o.show();
     }

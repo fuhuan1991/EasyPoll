@@ -6,16 +6,19 @@ import java.util.UUID;
 
 public class Option {
   private UUID id;
+  private int index;
   private UUID question_id;
   private String name;
   private int count;
 
   public Option(
           @JsonProperty("id") UUID id,
+          @JsonProperty("index") int index,
           @JsonProperty("question_id") UUID question_id,
           @JsonProperty("name") String name,
           @JsonProperty("count") int count) {
     this.id = id;
+    this.index = index;
     this.question_id = question_id;
     this.name = name;
     this.count = count;
@@ -27,6 +30,14 @@ public class Option {
 
   public void setId(UUID id) {
     this.id = id;
+  }
+
+  public int getIndex() {
+    return index;
+  }
+
+  public void setIndex(int index) {
+    this.index = index;
   }
 
   public UUID getQuestion_id() {
