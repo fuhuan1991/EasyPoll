@@ -23,8 +23,8 @@
             <h5 class="card-title question-title">
                 <th:block th:text="${question.name}" />
                 <th:block th:switch="${question.type}">
-                    <th:block th:case="'SINGLE'"><span class="badge badge-primary"><th:block th:text="${question.type}" /></span></th:block>
-                    <th:block th:case="'MULTIPLE'"><span class="badge badge-warning"><th:block th:text="${question.type}" /></span></th:block>
+                    <th:block th:case="'SINGLE'"><span class="type-tag">(Single choice)</span></th:block>
+                    <th:block th:case="'MULTIPLE'"><span class="type-tag">(Multiple choice)</span></th:block>
                 </th:block>
             </h5>
             <div th:each="option : ${question.options}" class="option">

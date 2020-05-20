@@ -1,5 +1,6 @@
 .main {
     padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 .question-block {
     margin-top: .9rem;
@@ -27,4 +28,7 @@
 }
 .modal-footer .btn{
     margin: auto;
+}
+.type-tag {
+    color: #1890ff;
 }

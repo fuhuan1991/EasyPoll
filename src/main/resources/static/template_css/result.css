@@ -8,7 +8,8 @@
 }
 
 .question-block {
-    margin-top: 2rem;
+    padding: 0rem 1rem;
+    margin-top: 1rem;
     margin-bottom: 2rem;
 }
 
@@ -29,7 +30,8 @@
 
 .refresh {
     width: 16rem;
-    margin-left: calc(50% - 10rem);
+    margin-left: calc(50% - 8rem);
+    margin-top:1rem;
 }
 
 @media (max-width: 768px){
@@ -41,6 +43,8 @@
 
 .jumbotron {
   padding: 1rem 1rem;
+  background: #ffffff;
+  margin-bottom: 1rem;
 }
 
 .jumbotron .display-4 {

@@ -1,0 +1,14 @@
+.main {
+    margin-top: .9rem;
+    margin-bottom: 2rem;
+    padding-top: .9rem;
+    padding-bottom: 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 3px 6px -4px rgba(0,0,0,.12), 0 6px 16px 0 rgba(0,0,0,.08), 0 9px 28px 8px rgba(0,0,0,.05);
+    text-align: center;
+}
+
+.main p {
+    margin-bottom: 0rem;
+    margin-top: 1rem;
+}
