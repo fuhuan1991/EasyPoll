@@ -8,3 +8,5 @@ ReactDOM.render(
   <Main />,
   document.getElementById('root')
 );
+
+document.title = "EasyPoll";

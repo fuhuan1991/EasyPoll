@@ -18,13 +18,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "move": "mv build/* ../../docs",
-    "clear": "rm -rf  ../../docs/*",
-    "build_for_gitHub_page": "npm run build && npm run clear && npm run move",
+    "move": "mv build/* ../main/resources/static/",
+    "clear": "rm -rf  ../main/resources/static/*",
+    "build+": "npm run build && npm run clear && npm run move",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://fuhuan1991.github.io/EasyPoll",
   "browserslist": {
     "production": [
       ">0.2%",
