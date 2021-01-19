@@ -136,6 +136,7 @@ class Main extends React.Component {
     }
 
     onDateChange = (date) => {
+        if (!date) date = moment().endOf('day');
         this.setState({
             endDate: date,
         });
