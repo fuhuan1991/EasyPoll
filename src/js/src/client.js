@@ -1,6 +1,7 @@
 import fetch from 'unfetch';
 
 const baseUrl = 'http://easypoll.us-east-2.elasticbeanstalk.com/';
+//const baseUrl = 'http://localhost:8080/';
 
 // check the status of all sort of response
 const checkStatus = response => {

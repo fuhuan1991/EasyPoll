@@ -19,7 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "move": "mv build/* ../main/resources/static/",
-    "clear": "rm -rf  ../main/resources/static/*",
+    "clear": "rm -rf ../main/resources/static/static && rm -rf ../main/resources/static/*.js && rm -rf ../main/resources/static/*.json && rm -rf ../main/resources/static/*.html",
     "build+": "npm run build && npm run clear && npm run move",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
