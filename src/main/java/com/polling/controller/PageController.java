@@ -68,6 +68,23 @@ public class PageController {
   }
 
   /**
+   * Real-time result page with SSE
+   */
+  @CrossOrigin
+  @GetMapping("/resultRealTime/{poll_id}")
+  public String resultRealTime(Model model, @PathVariable("poll_id") String poll_id) {
+    try {
+      Poll poll = this.pollService.findPollById(poll_id);
+      if (poll == null) return "lost";
+      model.addAttribute("poll", poll);
+      return "resultRealTime";
+    } catch (Exception e) {
+      e.printStackTrace();
+      return "lost";
+    }
+  }
+
+  /**
    * Request of interaction page for a certain poll.
    * If this poll does not exist in DB, a error page will be returned.
    * In this page, a user can take the poll.
