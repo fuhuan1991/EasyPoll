@@ -1,5 +1,6 @@
 package com.polling.controller;
 
+import com.polling.event.VoteEventPublisher;
 import com.polling.model.Option;
 import com.polling.model.Sample;
 import com.polling.model.Poll;
@@ -18,11 +19,13 @@ public class PollController {
 
   private final PollService pollService;
   private final OptionService optionService;
+  private final VoteEventPublisher voteEventPublisher;
 
   @Autowired
-  public PollController(PollService pollService, OptionService optionService) {
+  public PollController(PollService pollService, OptionService optionService, VoteEventPublisher voteEventPublisher) {
     this.pollService = pollService;
     this.optionService = optionService;
+    this.voteEventPublisher = voteEventPublisher;
   }
 
   /**
@@ -71,6 +74,8 @@ public class PollController {
     for (Option target : options) {
       this.optionService.inc(target);
     }
+
+    voteEventPublisher.publishEvent(poll_id);
   }
 
 
