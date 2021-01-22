@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Scope("singleton")
 public class SseEngine {
 
-  private static long TIMEOUT = 600000L;
+  private static long TIMEOUT = 1800000L;
 
   private final Map<String, HashSet<SseEmitter>> emitters = new ConcurrentHashMap<>();
 
@@ -61,7 +61,7 @@ public class SseEngine {
     HashSet<SseEmitter> set = this.emitters.get(poll_id);
 
     // if there are no one observing this poll, we don't need to dispatch any messages.
-    if (set.isEmpty()) return;
+    if (set == null || set.isEmpty()) return;
 
     List<SseEmitter> deadEmitters = new ArrayList<>();
     for (SseEmitter emitter : set) {
