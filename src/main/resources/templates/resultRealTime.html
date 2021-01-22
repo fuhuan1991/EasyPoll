@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/template_css/result.css">
+    <script defer src="/template_js/resultRealtime.js"></script>
+    <script defer src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<span id="poll_id" style="display: none"><th:block th:text="${poll.id}"/></span>
+<div class="container-sm main">
+    <div class="jumbotron">
+        <h3 class="display-4"><th:block th:text="${poll.title}" /></h3>
+        <p class="lead">This is the result page of your poll. This page offers real-time display of the result, which means no need to refresh the page unless the connection is lost.</p>
+        <hr class="my-4">
+        <button type="button" id="refresh" class="btn btn-primary refresh">Refresh</button>
+    </div>
+
+    <div id="alerts"></div>
+
+    <div th:each="question : ${poll.questions}" class="question-block">
+
+        <h5 class="card-title question-title">
+            <th:block th:text="${question.name}" />
+            <th:block th:switch="${question.type}">
+                <th:block th:case="'SINGLE'"><span class="type-tag">(Single choice)</span></th:block>
+                <th:block th:case="'MULTIPLE'"><span class="type-tag">(Multiple choice)</span></th:block>
+            </th:block>
+        </h5>
+        <div th:each="option : ${question.options}" class="option">
+            <div><th:block th:text="${option.name}"></th:block></div>
+            <div class="option-data">
+                <div class="counter" th:attr="option_id=${option.id}"><th:block th:text="${option.count}"></th:block></div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" th:attr="option_id=${option.id},question_id=${question.id},count=${option.count}"></div>
+                </div>
+            </div>
+        </div>
+        <hr class="my-4">
+    </div>
+
+    <p class="info-line">If you want to share this poll to you friends, please click <a th:href="@{/admin/{id}(id=${poll.id})}" >here</a>.
+    <p class="info-line">If you want to create another poll, please return to <a th:href="@{/}" >Homepage</a>.
+</div>
+</body>
+</html>
