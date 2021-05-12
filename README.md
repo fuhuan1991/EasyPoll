@@ -16,9 +16,6 @@ All you need to do is:
 - BootStrap
 - React
 
-## Try it now!
-http://easypoll.us-east-2.elasticbeanstalk.com
-
 ## todo
 - Server-Sent Events
 - reactive programming
